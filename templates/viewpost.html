@@ -1,0 +1,24 @@
+{% extends 'layout.html' %} 
+{% block content %}
+            <article class="media content-section border-0">
+                <img class='rounded-circle article-img' src="{{ url_for('static',filename='profile_pics/' +  post.profile_pic ) }}">
+                <div class="media-body">
+                <div class="article-metadata">
+                    <a class="mr-2" href="#">{{ post.author }}</a>
+                    <small class="text-muted">{{ post.date_posted }}</small>
+                </div>
+                <h2 class="article-title">{{ post.title }}</h2><br>
+                <p class="article-content text-muted content">{{ post.intro }}</p><br><br>
+                <p class="article-content "><img src="{{ url_for('static',filename='content_images/' +  post.post_image ) }} " width=90%></p>
+                <br><br>
+                <p class="article-content text-justify content" width=100%>{{ post.content }}</p>
+                {% if flag==True %}
+                <div>
+                    <a class='btn btn-secondary btn-sm m-1' href="{{ url_for('update',postid=post.id) }}">Update</a>
+                    <a class='btn btn-danger btn-sm m-1' href="{{ url_for('delete',postid=post.id) }}">Delete</a>
+                </div>
+                {% endif %}
+                </div>
+            </article>
+{% endblock content %}
+
